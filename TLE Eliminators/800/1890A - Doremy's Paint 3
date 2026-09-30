@@ -21,10 +21,30 @@ const int MOD = 1e9 + 7;
 
 // 4. Test Case Solver
 void solve() {
-    int n;
+	int n;
     cin >> n;
-    if(n%3 == 0) cout<<"Second\n";
-    else cout<<"First\n";    
+    unordered_map<int,int> mp;
+    for(int i=0;i<n;i++)
+    {
+    	int num;
+    	cin >> num;
+    	mp[num]++;
+    }
+    if(mp.size() >= 3) cout<<"NO\n";
+    else
+    {
+    	auto it = mp.begin();
+    	auto [key1, first] = *it;
+    	auto [key2, second] = *(++it);
+    	if(first == second || abs(first - second) == 1)
+    	{
+    		cout<<"YES\n";
+    	}	
+    	else
+    	{
+    		cout<<"NO\n";
+    	}
+    }
 }
 
 int main() {
